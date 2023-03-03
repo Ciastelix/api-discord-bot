@@ -30,7 +30,7 @@ class Commands(commands.Cog):
         self,
         member: Member,
         user_service: UserService = Depends(Provide[Container.user_service]),
-    ) -> None:
+    ):
         load_dotenv()
         nick = f"{member.display_name}#{member.discriminator}"
         usr = user_service.get(nick)
@@ -40,7 +40,7 @@ class Commands(commands.Cog):
             )
             await member.kick()
         else:
-            guild = await self.bot.fetch_guild(environ("GUILD"))
+            guild = await self.bot.fetch_guild(environ.get("GUILD"))
             role = discord.utils.get(
                 guild.roles,
                 name=usr.group,
@@ -62,6 +62,21 @@ class Commands(commands.Cog):
             return True
         except discord.errors.NotFound:
             return False
+
+    async def get_all_users(self) -> list[list[dict[str, str] | dict[str, list[str]]]]:
+        load_dotenv()
+        guild = await self.bot.fetch_guild(environ.get("GUILD"))
+        _users: list[Member] = [
+            i async for i in guild.fetch_members(limit=None) if i.nick
+        ]
+        users: list[list[list[str] | str]] = []
+        for i in _users:
+            usr = await guild.fetch_member(i.id)
+            if usr.nick:
+                roles = [i.name for i in usr.roles if i.name != "@everyone"]
+                users.append([{"name": usr.nick}, {"roles": roles}])
+
+        return users
 
     @tasks.loop(hours=168)
     async def meeting_noti(self):

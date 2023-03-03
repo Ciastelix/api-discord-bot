@@ -6,6 +6,7 @@ from typing import Awaitable
 
 class Bot:
     bot: commands.Bot
+    
 
     def __init__(self, prefix="!") -> None:
         self.bot = commands.Bot(command_prefix=prefix, intents=self.get_intents())

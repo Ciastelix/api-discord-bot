@@ -34,7 +34,7 @@ async def get_user(
     return {"users": user_service.get(nick)}
 
 
-@router.get("/users", tags=["user"], name="Get All Users")
+@router.get("/users", tags=["user"], name="Get All New Users")
 @inject
 def get_list(
     user_service: UserService = Depends(Provide[Container.user_service]),
@@ -47,7 +47,11 @@ async def get_roles():
     return {"roles": await bot.get_roles()}
 
 
-@router.delete("/users", tags=["user"], name="Delete User")
+@router.get("/dc/users", tags=["user"], name="Get All Discord Users")
+async def get_all_users():
+    return {"data": {"users": await bot.get_all_users()}}
+
+
 @inject
 @router.on_event("startup")
 async def startup_event():
