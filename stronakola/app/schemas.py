@@ -1,7 +1,3 @@
-from pydantic import BaseModel
-
-
-class UserSchema(BaseModel):
-    name: str | None = None
-    nick: str | None = None
-    group: str | None = None
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
+from app.models import User
+UserSchema = sqlalchemy_to_pydantic(User)

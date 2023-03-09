@@ -13,6 +13,7 @@ from fastapi import Depends
 from dependency_injector.wiring import inject, Provide
 from app.containers import Container
 from app.services import UserService
+from json import dumps, loads
 
 
 class Commands(commands.Cog):
@@ -74,7 +75,7 @@ class Commands(commands.Cog):
             usr = await guild.fetch_member(i.id)
             if usr.nick:
                 roles = [i.name for i in usr.roles if i.name != "@everyone"]
-                users.append([{"name": usr.nick}, {"roles": roles}])
+                users.append(loads(dumps({"name": usr.nick, "roles": roles})))
 
         return users
 
@@ -141,7 +142,9 @@ class Commands(commands.Cog):
 
     async def get_roles(self) -> list[str]:
         return [
-            i.name for i in (await self.bot.fetch_guild(environ.get("GUILD"))).roles
+            i.name
+            for i in (await self.bot.fetch_guild(environ.get("GUILD"))).roles
+            if i.name != "@everyone" and i.name != "new-app"  # bot's name
         ]
 
 

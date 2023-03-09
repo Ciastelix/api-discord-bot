@@ -1,8 +1,5 @@
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-
-
-#! FASTAPI part
 from fastapi import FastAPI
 from fastapi import FastAPI
 from app.containers import Container

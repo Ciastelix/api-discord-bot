@@ -136,6 +136,40 @@ tests = ["attrs[tests-no-zope]", "zope.interface"]
 tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy (>=0.971,<0.990)", "mypy (>=0.971,<0.990)", "pympler", "pympler", "pytest (>=4.3.0)", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-mypy-plugins", "pytest-xdist[psutil]", "pytest-xdist[psutil]"]
 
 [[package]]
+name = "autodoc"
+version = "0.5.0"
+description = "Autodoc Python implementation."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "autodoc-0.5.0.tar.gz", hash = "sha256:c4387c5a0f1c09b055bb2e384542ee1e016542f313b2a33d904ca77f0460ded3"},
+]
+
+[package.dependencies]
+decorator = "*"
+webtest = "*"
+
+[[package]]
+name = "beautifulsoup4"
+version = "4.11.2"
+description = "Screen-scraping library"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+files = [
+    {file = "beautifulsoup4-4.11.2-py3-none-any.whl", hash = "sha256:0e79446b10b3ecb499c1556f7e228a53e64a2bfcebd455f370d8927cb5b59e39"},
+    {file = "beautifulsoup4-4.11.2.tar.gz", hash = "sha256:bc4bdda6717de5a2987436fb8d72f45dc90dd856bdfd512a1314ce90349a0106"},
+]
+
+[package.dependencies]
+soupsieve = ">1.2"
+
+[package.extras]
+html5lib = ["html5lib"]
+lxml = ["lxml"]
+
+[[package]]
 name = "black"
 version = "23.1.0"
 description = "The uncompromising code formatter."
@@ -419,6 +453,18 @@ python-versions = "*"
 files = [
     {file = "comtypes-1.1.14-py2.py3-none-any.whl", hash = "sha256:7cdbe2dc65fe105eea97be04dc50ee3178747bcb64d802d7c0832416d75a87bd"},
     {file = "comtypes-1.1.14.zip", hash = "sha256:5d7caf6d3a86d51ddfc53e4548cae2dceee1b46672f8bd59679711dd01a934f2"},
+]
+
+[[package]]
+name = "decorator"
+version = "5.1.1"
+description = "Decorators for Humans"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "decorator-5.1.1-py3-none-any.whl", hash = "sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186"},
+    {file = "decorator-5.1.1.tar.gz", hash = "sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"},
 ]
 
 [[package]]
@@ -972,6 +1018,41 @@ typing-extensions = ">=4.2.0"
 [package.extras]
 dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
+
+[[package]]
+name = "pydantic-sqlalchemy"
+version = "0.0.9"
+description = "Tools to convert SQLAlchemy models to Pydantic models"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0"
+files = [
+    {file = "pydantic-sqlalchemy-0.0.9.tar.gz", hash = "sha256:82035d4b3f8019b2e3f070b7ce3f764a30ada03b632c1b5df54dd4c49438de6a"},
+    {file = "pydantic_sqlalchemy-0.0.9-py3-none-any.whl", hash = "sha256:5b8e3df9dc282d071478d7e5f7aeda8db5356c86c8ba68cd1a1293ead2a3cea8"},
+]
+
+[package.dependencies]
+pydantic = ">=1.5.1,<2.0.0"
+sqlalchemy = ">=1.3.16,<2.0.0"
+
+[package.extras]
+dev = ["autoflake[dev] (>=1.3.1,<2.0.0)", "flake8[dev] (>=3.7.9,<4.0.0)", "jupyter[dev] (>=1.0.0,<2.0.0)"]
+
+[[package]]
+name = "pymysql"
+version = "1.0.2"
+description = "Pure Python MySQL Driver"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "PyMySQL-1.0.2-py3-none-any.whl", hash = "sha256:41fc3a0c5013d5f039639442321185532e3e2c8924687abe6537de157d403641"},
+    {file = "PyMySQL-1.0.2.tar.gz", hash = "sha256:816927a350f38d56072aeca5dfb10221fe1dc653745853d30a216637f5d7ad36"},
+]
+
+[package.extras]
+ed25519 = ["PyNaCl (>=1.4.0)"]
+rsa = ["cryptography"]
 
 [[package]]
 name = "pynacl"
@@ -4007,6 +4088,18 @@ files = [
 ]
 
 [[package]]
+name = "soupsieve"
+version = "2.4"
+description = "A modern CSS selector implementation for Beautiful Soup."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "soupsieve-2.4-py3-none-any.whl", hash = "sha256:49e5368c2cda80ee7e84da9dbe3e110b70a4575f196efb74e51b94549d921955"},
+    {file = "soupsieve-2.4.tar.gz", hash = "sha256:e28dba9ca6c7c00173e34e4ba57448f0688bb681b7c5e8bf4971daafc093d69a"},
+]
+
+[[package]]
 name = "speechrecognition"
 version = "3.9.0"
 description = "Library for performing speech recognition, with support for several engines and APIs, online and offline."
@@ -4175,6 +4268,22 @@ h11 = ">=0.8"
 standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)", "pyyaml (>=5.1)", "uvloop (>=0.14.0,!=0.15.0,!=0.15.1)", "watchfiles (>=0.13)", "websockets (>=10.4)"]
 
 [[package]]
+name = "waitress"
+version = "2.1.2"
+description = "Waitress WSGI server"
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+files = [
+    {file = "waitress-2.1.2-py3-none-any.whl", hash = "sha256:7500c9625927c8ec60f54377d590f67b30c8e70ef4b8894214ac6e4cad233d2a"},
+    {file = "waitress-2.1.2.tar.gz", hash = "sha256:780a4082c5fbc0fde6a2fcfe5e26e6efc1e8f425730863c04085769781f51eba"},
+]
+
+[package.extras]
+docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.9)"]
+testing = ["coverage (>=5.0)", "pytest", "pytest-cover"]
+
+[[package]]
 name = "wcwidth"
 version = "0.2.6"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -4185,6 +4294,43 @@ files = [
     {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
     {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
+
+[[package]]
+name = "webob"
+version = "1.8.7"
+description = "WSGI request and response object"
+category = "main"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*"
+files = [
+    {file = "WebOb-1.8.7-py2.py3-none-any.whl", hash = "sha256:73aae30359291c14fa3b956f8b5ca31960e420c28c1bec002547fb04928cf89b"},
+    {file = "WebOb-1.8.7.tar.gz", hash = "sha256:b64ef5141be559cfade448f044fa45c2260351edcb6a8ef6b7e00c7dcef0c323"},
+]
+
+[package.extras]
+docs = ["Sphinx (>=1.7.5)", "pylons-sphinx-themes"]
+testing = ["coverage", "pytest (>=3.1.0)", "pytest-cov", "pytest-xdist"]
+
+[[package]]
+name = "webtest"
+version = "3.0.0"
+description = "Helper to test WSGI applications"
+category = "main"
+optional = false
+python-versions = ">=3.6, <4"
+files = [
+    {file = "WebTest-3.0.0-py3-none-any.whl", hash = "sha256:2a001a9efa40d2a7e5d9cd8d1527c75f41814eb6afce2c3d207402547b1e5ead"},
+    {file = "WebTest-3.0.0.tar.gz", hash = "sha256:54bd969725838d9861a9fa27f8d971f79d275d94ae255f5c501f53bb6d9929eb"},
+]
+
+[package.dependencies]
+beautifulsoup4 = "*"
+waitress = ">=0.8.5"
+WebOb = ">=1.2"
+
+[package.extras]
+docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.8)"]
+tests = ["PasteDeploy", "WSGIProxy2", "coverage", "pyquery", "pytest", "pytest-cov"]
 
 [[package]]
 name = "yarl"
@@ -4277,4 +4423,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "061dc88c41c24253864c2866fdad4339cd83b8c1b4cb36ac2439052b5ce5972c"
+content-hash = "8e31dcd9f1acafe81d5305625cb8fd4ccd14d5375945dca86a0165c62e9f2301"

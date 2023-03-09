@@ -11,7 +11,7 @@ class UserService:
     def get_all(self) -> Iterator[User]:
         return self._repository.get_all()
 
-    def get(self, nick: str) -> User:
+    def get(self, nick: str) -> UserSchema:
         return self._repository.get_by_nick(nick)
 
     def delete(self, nick: str) -> None:
