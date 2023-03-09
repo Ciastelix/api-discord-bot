@@ -90,6 +90,10 @@ async def get_all_users() -> Any:
         raise HTTPException(status_code=404, detail="No users found")
     return {"users": users}
 
+@router.delete("/users",tags=["user"],name="Delete User",status_code=status.HTTP_200_OK)
+async def delete_user(nick:str, user_service: UserService = Depends(Provide[Container.user_service]))->None:
+    return user_service.delete_user(nick)
+    
 
 @inject
 @router.on_event("startup")
